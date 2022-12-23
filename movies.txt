@@ -1,0 +1,81 @@
+import numpy as np
+import pandas as pd
+df=pd.read_csv("C:/Users/CSE WPT/Downloads/archive (12)/movies_metadata.csv")
+df.head()
+
+df.tail()
+
+df.describe()
+
+df.dtypes
+
+print(df.isnull().values.any())
+
+df.isnull().sum()
+
+df.isnull()
+
+df.nunique()
+
+df.status.value_counts()
+
+print("columns of the dataframe")
+print(df.columns)
+
+result=df.info()
+print("Details of dataframe")
+print(result)
+
+third_movie=df.iloc[2]
+print("Details of third movie: ")
+print(third_movie)
+
+result=df[['original_title','genres']]
+print("Details of titles and genres:")
+print(result)
+
+df.shape
+
+df=df.set_index("original_title")
+results=df.loc['Grumpier Old Men']
+print("Details of movie Grumpier old men")
+print(result)
+
+small=df[['release_date','budget','revenue','runtime']]
+print(small)
+#print(small.head())
+small.head()
+
+result=small.sort_values('release_date')
+print('data Frame based on release date :')
+print(result)
+
+
+reult=small[small['release_date']>'1995-01-01']
+print(result)
+
+result=small.sort_values('runtime',ascending=False)
+print("dataframe sort on runtime")
+print(result)
+
+small=df[['runtime']]
+run_time=small['runtime']
+print(small)
+
+print("Longest runtime:")
+print(run_time.max())
+
+print("shortest runtime:")
+print(run_time.min())
+
+result=df['vote_count'].quantile(0.70)
+print(result)
+
+result=small[(small['runtime']>=30)&(small['runtime']<360)]
+print(result)
+
+n=500
+small=df[['vote_count']]
+result=small[small['vote_count']>=n]
+print(result)
+
